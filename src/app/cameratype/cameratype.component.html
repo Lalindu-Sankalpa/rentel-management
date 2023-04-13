@@ -15,7 +15,7 @@
             <a class="nav-link deactive" routerLink="/guest">Guest</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/Cameratype">Room</a>
+            <a class="nav-link active" aria-current="page" routerLink="/Cameratype">Camera</a>
           </li>
           <li class="nav-item">
             <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
@@ -30,7 +30,7 @@
 <nav class="navbar navbar-expand-lg secondNavBar" id ="secondNavBar">
   <div class="container-fluid">
     <div class="bar">
-      <img class="img" src="assets/img/room.jpg">
+      <img class="img" src="assets/img/camera.jpg">
       <h2 class ="pagename" ><b>Camera Type </b></h2>
     </div>
 
@@ -56,7 +56,7 @@
       <!-- Camera Type Add modal-->
       <ng-template #addCameratypeModal let-modal >
         <div class="modal-body">
-          <h2 class="text-center" ><b>Room Details</b></h2>
+          <h2 class="text-center" ><b>Camera Details</b></h2>
           <form [formGroup]="Cameratypeform">
             <div class="form-group mb-3">
               <label>Camera Type Name:</label>
@@ -80,7 +80,7 @@
         </div>
       </ng-template>
 
-      <!-- room type display-->     
+      <!-- camera type display-->     
       <div *ngFor = "let Cameratype of cameratypes">
         <button class="btn Cameratypebtn" (click)="getId(Cameratype.id)" (click)="getName(Cameratype.name)" [ngClass]="{'click': Cameratype.id == CameratypeID}"   ><b>{{Cameratype.name}}</b>
           <mat-icon  [matMenuTriggerFor]="menu" id="icon">more_vert</mat-icon>
@@ -89,7 +89,7 @@
             <!-- edit modal-->
             <ng-template #updateCameratypeModal let-modal >
               <div class="modal-body">
-              <h2 class="text-center" ><b>Room Details</b></h2>
+              <h2 class="text-center" ><b>Camera Details</b></h2>
                 <form [formGroup]="Cameratypeform">
                   <div class="form-group mb-3">
                     <label>Camera Type Name:</label>
@@ -109,7 +109,7 @@
               </div>
               <div class="modal-footer">
                 <button  id="Cancel" type="button"  (click)="cancel()"(click)="modal.close('Save click')">Cancel</button>     
-                <button id="btn" type="button" [disabled]="Cameratypeform.invalid" (click)="UpdateRoom(Cameratype.id)" (click)="modal.close('Save click')">Save</button>
+                <button id="btn" type="button" [disabled]="Cameratypeform.invalid" (click)="UpdateCamera(Cameratype.id)" (click)="modal.close('Save click')">Save</button>
               </div>
             </ng-template>
 
@@ -135,7 +135,7 @@
     </div>
 
     <div class="col no-float" id="main">
-      <app-room [data]= "CameratypeID" [Name]= "CameratypeName" [search]="searchText"></app-room>
+      <app-camera [data]= "CameratypeID" [Name]= "CameratypeName" [search]="searchText"></app-camera>
     </div>
   </div>
 </div>

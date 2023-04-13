@@ -5,8 +5,8 @@ import { ReservationService } from '../reservation.service';
 import { Reservation } from '../reservation';
 import { GuestService } from 'src/app/guest/guest.service';
 import { Guest } from 'src/app/guest/guest';
-import { RoomService } from 'src/app/cameratype/room/room.service';
-import { Room } from 'src/app/cameratype/room/room';
+import { CameraService } from 'src/app/cameratype/camera/camera.service';
+import { Camera } from 'src/app/cameratype/camera/camera';
 
 @Component({
   selector: 'app-new-reservation',
@@ -17,24 +17,24 @@ export class NewReservationComponent implements OnInit {
 
   Reservationform: FormGroup;
   guests: Guest[] = [];
-  rooms: Room[] = [];
+  cameras: Camera[] = [];
   reservations:Reservation[] = [];
   GuestId!: string;
   Guestform: FormGroup;
-  Roomform: FormGroup;
+  Cameraform: FormGroup;
   newReservationNo!: string;
 
   constructor(
     private reservationService : ReservationService,
     private guestService : GuestService,
-    private roomService : RoomService,
+    private cameraService : CameraService,
     public fb: FormBuilder
   ) {
     this.Reservationform = this.fb.group({
       id: new FormControl(''),
       reservationNo: new FormControl(''),
       guestId: new FormControl('',Validators.required), 
-      roomId: new FormControl('', Validators.required),
+      cameraId: new FormControl('', Validators.required),
       arrivalDate: new FormControl('' , Validators.required), 
       departureDate: new FormControl('', Validators.required),
       notes: new FormControl(''),
@@ -54,11 +54,11 @@ export class NewReservationComponent implements OnInit {
       email: new FormControl(''),
       isActive: new FormControl(''),
     }),
-    this.Roomform = this.fb.group({
+    this.Cameraform = this.fb.group({
       id: new FormControl(''),
-      roomNo: new FormControl(''),
+      cameraNo: new FormControl(''),
       price: new FormControl(''), 
-      roomStatus: new FormControl(''),
+      cameraStatus: new FormControl(''),
       cameratypeId: new FormControl(''),
       isActive: new FormControl(''),
     })
@@ -72,8 +72,8 @@ export class NewReservationComponent implements OnInit {
     this.guestService.getAllContacts().subscribe((response) => {
       this.guests = response;
     });
-    this.roomService.getAllRooms().subscribe((response) => {
-      this.rooms = response;
+    this.cameraService.getAllCameras().subscribe((response) => {
+      this.cameras = response;
     });
     this.reservationService.getOrders().subscribe((response) => {
       this.reservations = response;
@@ -88,9 +88,9 @@ export class NewReservationComponent implements OnInit {
     const guest = this.guests.find(g => g.id == id);
     return id && guest ? guest.name : '';
   }
-  displayRoomNo(id?: any) {
-    const room = this.rooms.find(r => r.id == id);
-    return id && room ? room.roomNo : '';
+  displayCameraNo(id?: any) {
+    const camera = this.cameras.find(r => r.id == id);
+    return id && camera ? camera.cameraNo : '';
   }
   submitForm() {
     this.reservationService.submitForm(this.Reservationform.value).subscribe(
@@ -103,6 +103,6 @@ export class NewReservationComponent implements OnInit {
   cancel() {
     this.Guestform.reset();
     this.Reservationform.reset();
-    this.Roomform.reset();
+    this.Cameraform.reset();
   }
 }

@@ -4,8 +4,8 @@ export interface Reservation {//Model
     guestId: string;
     guestName: string;
     guestEmail:string;
-    roomNo:string;
-    roomId: string;
+    cameraNo:string;
+    cameraId: string;
     arrivalDate: string;
     departureDate: string;
     notes: string;

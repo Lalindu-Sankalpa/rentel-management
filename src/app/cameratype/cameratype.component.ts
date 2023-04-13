@@ -69,7 +69,7 @@ export class CameratypeComponent implements OnInit {
     )
   };
 
-  UpdateRoom(id: string) {
+  UpdateCamera(id: string) {
     this.cameratypeService.UpdateCameratype(id,this.Cameratypeform.value).subscribe((response) => {
         this.cameratypeService.getAllCameratype().subscribe(
           (response) => {

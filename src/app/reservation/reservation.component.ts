@@ -5,8 +5,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
 import { GuestService } from 'src/app/guest/guest.service';
-import { RoomService } from '../cameratype/room/room.service';
-import { Room } from '../cameratype/room/room';
+import { CameraService } from '../cameratype/camera/camera.service';
+import { Camera } from '../cameratype/camera/camera';
 import { Guest } from '../guest/guest';
 import { forkJoin } from 'rxjs';
 
@@ -21,13 +21,13 @@ export class ReservationComponent implements OnInit {
   searchText: any;
   page:number = 1;
   guests: Guest[] = [];
-  rooms: Room[] = [];
+  cameras: Camera[] = [];
   reservations: Reservation[] = [];
   
   constructor(
     private reservationService : ReservationService,
     private guestService : GuestService,
-    private roomService : RoomService,
+    private cameraService : CameraService,
     private modalService: NgbModal,
     public fb: FormBuilder
   ) {
@@ -35,7 +35,7 @@ export class ReservationComponent implements OnInit {
       orderId: new FormControl(''),
       reservationNo: new FormControl(''),
       guestId: new FormControl('',Validators.required), 
-      roomId: new FormControl('', Validators.required),
+      cameraId: new FormControl('', Validators.required),
       arrivalDate: new FormControl('' , Validators.required), 
       departureDate: new FormControl('', Validators.required),
       notes: new FormControl(''),
@@ -50,15 +50,15 @@ export class ReservationComponent implements OnInit {
     
     forkJoin({
       guestResponse: this.guestService.getAllContacts(),
-      roomResponse: this.roomService.getAllRooms(),
+      cameraResponse: this.cameraService.getAllCameras(),
       reservationResponse: this.reservationService.getOrders()
     })
     .subscribe((response) => {
       this.guests = response.guestResponse;
-      this.rooms = response.roomResponse;
+      this.cameras = response.cameraResponse;
       this.reservations = response.reservationResponse.map(reservation => {
-        const room = this.rooms.find(r => r.id == reservation.roomId);
-        reservation.roomNo = room != undefined ? room.roomNo : 'NA';
+        const camera = this.cameras.find(r => r.id == reservation.cameraId);
+        reservation.cameraNo = camera != undefined ? camera.cameraNo : 'NA';
         const email = this.guests.find(e => e.id == reservation.guestId);
         reservation.guestEmail = email != undefined ? email.email : 'NA';
         const guest = this.guests.find(g => g.id == reservation.guestId);

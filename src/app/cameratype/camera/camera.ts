@@ -1,8 +1,8 @@
-export interface Room { //Model
+export interface Camera { //Model
     id: string;
-    roomNo: string;
+    cameraNo: string;
     price: string;
-    roomStatus: string;
+    cameraStatus: string;
     isActive: boolean;
     cameratypeId:string;
 }

@@ -1,51 +1,51 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import { Room } from "./room";
-import { RoomService } from './room.service';
+import { Camera } from "./camera";
+import { CameraService } from './camera.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-room',
-  templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css']
+  selector: 'app-camera',
+  templateUrl: './camera.component.html',
+  styleUrls: ['./camera.component.css']
 })
-export class RoomComponent implements OnInit {
+export class CameraComponent implements OnInit {
   @Input() data !:string; 
   @Input() search!:string;
   @Input() Name!:string;
   ID !:string;
   toggle = true;
   status = 'Enable'; 
-  Roomform: FormGroup;
+  Cameraform: FormGroup;
   searchText: any;
   page: number = 1;
-  rooms: Room[] = [];
+  cameras: Camera[] = [];
  
   constructor(
-    private roomService : RoomService,
+    private cameraService : CameraService,
     private router: Router,
     private modalService: NgbModal,
     public fb: FormBuilder,
   ) {
-    this.Roomform = this.fb.group({
+    this.Cameraform = this.fb.group({
       id: new FormControl(''),
-      roomNo: new FormControl('', Validators.required),
+      cameraNo: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required), 
-      roomStatus: new FormControl('', Validators.required),
+      cameraStatus: new FormControl('', Validators.required),
       cameratypeId: new FormControl('', Validators.required),
       isActive: new FormControl(''),
     })
   }
 
   get validation() {
-    return this.Roomform.controls;
+    return this.Cameraform.controls;
   }
   
   ngOnInit(): void {
-    this.roomService.getAllRooms().subscribe((response) => {
-      this.rooms = response;
+    this.cameraService.getAllCameras().subscribe((response) => {
+      this.cameras = response;
      
     });
   }
@@ -54,10 +54,10 @@ export class RoomComponent implements OnInit {
   }
 
   deleteRow(id:string) {
-    this.roomService.deleteRoom(id).subscribe((response) => {
-        this.roomService.getAllRooms().subscribe(
+    this.cameraService.deleteCamera(id).subscribe((response) => {
+        this.cameraService.getAllCameras().subscribe(
           (response) => {
-            this.rooms = response;
+            this.cameras = response;
           },
           (error) => console.log(error)
         );
@@ -67,15 +67,15 @@ export class RoomComponent implements OnInit {
   } 
 
   submitForm() {
-    if(this.Roomform.value.isActive == "" || this.Roomform.value.isActive == null){
-      this.Roomform.value.isActive = false;
+    if(this.Cameraform.value.isActive == "" || this.Cameraform.value.isActive == null){
+      this.Cameraform.value.isActive = false;
     }
-    this.roomService.submitForm(this.Roomform.value).subscribe(
+    this.cameraService.submitForm(this.Cameraform.value).subscribe(
       (response) => {
-        this.roomService.getAllRooms().subscribe(
+        this.cameraService.getAllCameras().subscribe(
           (response) => {
-            this.rooms = response;
-            this.Roomform.reset();
+            this.cameras = response;
+            this.Cameraform.reset();
           },
           (error) => console.log(error)
         );
@@ -84,15 +84,15 @@ export class RoomComponent implements OnInit {
     )
   }
 
-  UpdateRoom(id:string) {
-    if(this.Roomform.value.isActive == "" || this.Roomform.value.isActive == null){
-      this.Roomform.value.isActive = false;
+  UpdateCamera(id:string) {
+    if(this.Cameraform.value.isActive == "" || this.Cameraform.value.isActive == null){
+      this.Cameraform.value.isActive = false;
     }
-    this.roomService.UpdateRoom(id,this.Roomform.value).subscribe((response) => {
-        this.roomService.getAllRooms().subscribe(
+    this.cameraService.UpdateCamera(id,this.Cameraform.value).subscribe((response) => {
+        this.cameraService.getAllCameras().subscribe(
           (response) => {
-            this.rooms = response;
-            this.Roomform.reset();
+            this.cameras = response;
+            this.Cameraform.reset();
           },
           (error) => console.log(error)
         );
@@ -117,7 +117,7 @@ export class RoomComponent implements OnInit {
   }
 
   clearModalData() {
-    this.Roomform.reset();
+    this.Cameraform.reset();
   }
   cancel() {
     this.ngOnInit()

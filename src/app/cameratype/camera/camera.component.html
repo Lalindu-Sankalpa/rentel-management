@@ -2,21 +2,21 @@
     <mat-toolbar>
         <h4><b>Camera & Drone Overview</b></h4>
     <span class="example-spacer"></span>
-        <mat-icon (click)="open(addRoomModal)" (click)="setId()" (click)="clearModalData()" >add</mat-icon>
+        <mat-icon (click)="open(addCameraModal)" (click)="setId()" (click)="clearModalData()" >add</mat-icon>
     </mat-toolbar>
 </p>
       
 <!-- Modal -->      
-<ng-template #addRoomModal let-modal >
+<ng-template #addCameraModal let-modal >
     <div class="modal-body">
-        <h2 class="text-center" ><b>Room Details</b></h2>
+        <h2 class="text-center" ><b>Camera Details</b></h2>
         
-        <form [formGroup]="Roomform">
+        <form [formGroup]="Cameraform">
           <div class="form-group mb-3">
-            <label>Room Number:</label>
-            <input type="text" class="form-control" formControlName="roomNo">
-            <span class="error" *ngIf="validation.roomNo.invalid && validation.roomNo.touched" >
-              <small>  Room Number is required!</small>
+            <label>Camera Number:</label>
+            <input type="text" class="form-control" formControlName="cameraNo">
+            <span class="error" *ngIf="validation.cameraNo.invalid && validation.cameraNo.touched" >
+              <small>  Camera Number is required!</small>
             </span>
           </div>
           <div class="form-group mb-3">
@@ -27,10 +27,10 @@
             </span>
           </div>
           <div class="form-group mb-3">
-            <label>Room Status :</label>
-            <input type="text" class="form-control" formControlName="roomStatus" >
-            <span class="error" *ngIf="validation.roomStatus.invalid && validation.roomStatus.touched" >
-              <small>Room Status is required!</small>
+            <label>Camera Status :</label>
+            <input type="text" class="form-control" formControlName="cameraStatus" >
+            <span class="error" *ngIf="validation.cameraStatus.invalid && validation.cameraStatus.touched" >
+              <small>Camera Status is required!</small>
             </span>
           </div> 
           <div class="form-group mb-3">
@@ -46,7 +46,7 @@
     </div>
     <div class="modal-footer">
       <button  id="Cancel" type="button" (click)="modal.close('Save click')">Cancel</button>     
-      <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
+      <button id="btn" type="button" [disabled]="Cameraform.invalid" (click)="submitForm()" (click)="modal.close('Save click')">Save</button>
     </div>
 </ng-template>
       
@@ -57,57 +57,57 @@
       <thead>
         <tr>
           <th scope="col">Status</th>
-          <th scope="col">Room No</th>
+          <th scope="col">Camera No</th>
           <th scope="col">Price</th>
-          <th scope="col">Room Status</th>
+          <th scope="col">Camera Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let room of rooms | filter:search">
-          <ng-container *ngIf="room.CameratypeId == data ">
-            <td data-label="Status" > <mat-icon [ngStyle]="{'color': room.isActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
-            <td data-label="Room No" > <span>{{ room.roomNo }}</span></td>
-            <td data-label="Price" ><span>{{ room.price }}</span></td>
-            <td data-label="Room Status"><span>{{ room.roomStatus}}</span></td>
+        <tr *ngFor = "let camera of cameras | filter:search">
+          <ng-container *ngIf="camera.CameratypeId == data ">
+            <td data-label="Status" > <mat-icon [ngStyle]="{'color': camera.isActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
+            <td data-label="Camera No" > <span>{{ camera.cameraNo }}</span></td>
+            <td data-label="Price" ><span>{{ camera.price }}</span></td>
+            <td data-label="Camera Status"><span>{{ camera.cameraStatus}}</span></td>
             <td data-label="Action"><span>
-              <mat-icon (click)="open(updateRoomModal)" style="color: #000;">edit</mat-icon>
+              <mat-icon (click)="open(updateCameraModal)" style="color: #000;">edit</mat-icon>
 
               <!--Edit Modal -->
-              <ng-template #updateRoomModal let-modal >
+              <ng-template #updateCameraModal let-modal >
                 <div class="modal-body">
-                  <h2 class="text-center" ><b>Room Details</b></h2>
-                  <form [formGroup]="Roomform">
+                  <h2 class="text-center" ><b>Camera Details</b></h2>
+                  <form [formGroup]="Cameraform">
                     <div class="form-group mb-3">
-                      <label>Room Number:</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.roomNo" formControlName="roomNo">
-                      <span class="error" *ngIf="validation.roomNo.invalid && validation.roomNo.touched" >
-                        <small>  Room Number is required!</small>
+                      <label>Camera Number:</label>
+                      <input type="text" class="form-control" [(ngModel)]="camera.cameraNo" formControlName="cameraNo">
+                      <span class="error" *ngIf="validation.cameraNo.invalid && validation.cameraNo.touched" >
+                        <small>  Camera Number is required!</small>
                       </span>
                     </div>
                     <div class="form-group mb-3">
                       <label >Price :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.price" formControlName="price">
+                      <input type="text" class="form-control" [(ngModel)]="camera.price" formControlName="price">
                       <span class="error" *ngIf="validation.price.invalid && validation.price.touched" >
                         <small>Price is required!</small> 
                       </span>
                     </div>
                     <div class="form-group mb-3">
-                      <label>Room Status :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.roomStatus" formControlName="roomStatus" >
-                      <span class="error" *ngIf="validation.roomStatus.invalid && validation.roomStatus.touched" >
-                        <small>Room Status is required!</small>
+                      <label>Camera Status :</label>
+                      <input type="text" class="form-control" [(ngModel)]="camera.cameraStatus" formControlName="cameraStatus" >
+                      <span class="error" *ngIf="validation.cameraStatus.invalid && validation.cameraStatus.touched" >
+                        <small>Camera Status is required!</small>
                       </span>
                     </div> 
                     <div class="form-group mb-3">
                       <label>Camera Type Number :</label>
-                      <input type="text" class="form-control" [(ngModel)]="room.CameratypeId" formControlName="CameratypeId" >
+                      <input type="text" class="form-control" [(ngModel)]="camera.CameratypeId" formControlName="CameratypeId" >
                       <span class="error" *ngIf="validation.CameratypeId.invalid && validation.CameratypeId.touched" >
                         <small>Camera Type Number is required!</small>
                       </span>
                     </div> 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" [(ngModel)]="room.isActive" formControlName="isActive">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="camera.isActive" formControlName="isActive">
                       <label class="form-check-label" for="gridCheck">
                         Is active?
                       </label>
@@ -116,14 +116,14 @@
                 </div>
                 <div class="modal-footer">
                   <button  id="Cancel" type="button" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>     
-                  <button id="btn" type="button" [disabled]="Roomform.invalid" (click)="UpdateRoom(room.id)" (click)="modal.close('Save click')">Save</button>
+                  <button id="btn" type="button" [disabled]="Cameraform.invalid" (click)="UpdateCamera(camera.id)" (click)="modal.close('Save click')">Save</button>
                 </div>
               </ng-template>
 
-              <mat-icon  (click)="open(deleteRoomModal)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
+              <mat-icon  (click)="open(deleteCameraModal)"  style="color:#B21313; margin-left: 15px;">delete</mat-icon>
           
               <!--Delete msg Modal -->
-              <ng-template #deleteRoomModal let-modal>
+              <ng-template #deleteCameraModal let-modal>
                 <div class="modal-header">
                   <h2 class="modal-title" id="staticBackdropLabel" style="color: #B21313;"><b>Confirmation</b></h2>
                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -131,10 +131,10 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  Are you sure to delete this Room ?
+                  Are you sure to delete this Camera ?
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="deletebtn btn btn-outline-dark" (click)="deleteRow(room.id)" (click)="modal.close('Delete click')">Delete</button>
+                  <button type="button" class="deletebtn btn btn-outline-dark" (click)="deleteRow(camera.id)" (click)="modal.close('Delete click')">Delete</button>
                 </div>
               </ng-template>
             </span>

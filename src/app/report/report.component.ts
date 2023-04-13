@@ -3,8 +3,8 @@ import { Guest } from '../guest/guest';
 import { GuestService } from '../guest/guest.service';
 import { Reservation } from '../reservation/reservation';
 import { ReservationService } from '../reservation/reservation.service';
-import { Room } from '../cameratype/room/room';
-import { RoomService } from '../cameratype/room/room.service';
+import { Camera } from '../cameratype/camera/camera';
+import { CameraService } from '../cameratype/camera/camera.service';
 import { forkJoin } from 'rxjs';
 
 
@@ -19,27 +19,27 @@ export class ReportComponent implements OnInit {
   searchText: any;
   page:number = 1;
   guests: Guest[] = [];
-  rooms: Room[] = [];
+  cameras: Camera[] = [];
   reservations: Reservation[] = [];
   
   constructor(
     private reservationService : ReservationService,
     private guestService : GuestService,
-    private roomService : RoomService,) { }
+    private cameraService : CameraService,) { }
 
   ngOnInit(): void {
     
     forkJoin({
       guestResponse: this.guestService.getAllContacts(),
-      roomResponse: this.roomService.getAllRooms(),
+      cameraResponse: this.cameraService.getAllCameras(),
       reservationResponse: this.reservationService.getOrders()
     })
     .subscribe((response) => {
       this.guests = response.guestResponse;
-      this.rooms = response.roomResponse;
+      this.cameras = response.cameraResponse;
       this.reservations = response.reservationResponse.map(reservation => {
-        const room = this.rooms.find(r => r.id == reservation.roomId);
-        reservation.roomNo = room != undefined ? room.roomNo : 'NA';
+        const camera = this.cameras.find(r => r.id == reservation.cameraId);
+        reservation.cameraNo = camera != undefined ? camera.cameraNo : 'NA';
         const email = this.guests.find(e => e.id == reservation.guestId);
         reservation.guestEmail = email != undefined ? email.email : 'NA';
         const guest = this.guests.find(g => g.id == reservation.guestId);

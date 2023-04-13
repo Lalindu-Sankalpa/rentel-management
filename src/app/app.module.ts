@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { GuestComponent } from './guest/guest.component';
-import { RoomComponent } from './cameratype/room/room.component';
+import { CameraComponent } from './cameratype/camera/camera.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +36,7 @@ import { ReportComponent } from './report/report.component';
     AppComponent,
     LoginComponent,
     GuestComponent,
-    RoomComponent,
+    CameraComponent,
     ReservationComponent,
     AuthComponent,
     CameratypeComponent,

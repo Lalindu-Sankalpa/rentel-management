@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";  //call API
 import { Injectable } from "@angular/core";  //service
-import { Room } from "./room";
+import { Camera } from "./camera";
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
@@ -9,23 +9,23 @@ import { environment } from "src/environments/environment";
     providedIn: 'root',
 })
 
-export class RoomService {
+export class CameraService {
     
     contactsBaseUrl: string = environment.serverBaseUrl;
     constructor(private http : HttpClient, private router: Router, public fb: FormBuilder){
     }
 
-    getAllRooms() {
-      return this.http.get<Room[]>(this.contactsBaseUrl + '/rooms');
+    getAllCameras() {
+      return this.http.get<Camera[]>(this.contactsBaseUrl + '/cameras');
     }
-    deleteRoom(id: string) {
-      return this.http.delete(this.contactsBaseUrl + '/rooms'+'/' + id);
+    deleteCamera(id: string) {
+      return this.http.delete(this.contactsBaseUrl + '/cameras'+'/' + id);
     }
     submitForm(formData: any) {
-      return this.http.post(this.contactsBaseUrl + '/rooms', formData);
+      return this.http.post(this.contactsBaseUrl + '/cameras', formData);
     }
 
-    UpdateRoom(id:string, formData: any) {
-      return this.http.put (this.contactsBaseUrl + '/rooms'+ '/' + id, formData);
+    UpdateCamera(id:string, formData: any) {
+      return this.http.put (this.contactsBaseUrl + '/cameras'+ '/' + id, formData);
     }
 }
