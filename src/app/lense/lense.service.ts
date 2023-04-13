@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";  //call API
 import { Injectable } from "@angular/core";  //service
 import { Router } from "@angular/router";
-import { inventory } from "./inventory";
+import { lense } from "./lense";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
 
@@ -9,14 +9,14 @@ import { environment } from "src/environments/environment";
     providedIn: 'root',
 })
 
-export class InventoryService {
+export class LenseService {
     
-    contactsBaseUrl: string = environment.serverBaseUrl + '/inventories';
+    contactsBaseUrl: string = environment.serverBaseUrl + '/lenses';
     constructor(private http : HttpClient, private router: Router, public fb: FormBuilder) {
     }
 
     getAllContacts() {
-      return this.http.get<inventory[]>(this.contactsBaseUrl);
+      return this.http.get<lense[]>(this.contactsBaseUrl);
     } 
 
     deleteGuest(id: string) {
@@ -31,6 +31,6 @@ export class InventoryService {
       return this.http.put (this.contactsBaseUrl + '/' + id, formData);
     }
     getOneGuest(id:string) {
-      return this.http.get<inventory[]> (this.contactsBaseUrl + '/' + id);
+      return this.http.get<lense[]> (this.contactsBaseUrl + '/' + id);
     }
 }

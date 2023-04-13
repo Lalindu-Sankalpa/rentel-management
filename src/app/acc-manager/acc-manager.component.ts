@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from "./Item";
-import {HSKPService} from './hskp.service';
+import {AccService} from './acc.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-hskp-manager',
-  templateUrl: './hskp-manager.component.html',
-  styleUrls: ['./hskp-manager.component.css']
+  selector: 'app-acc-manager',
+  templateUrl: './acc-manager.component.html',
+  styleUrls: ['./acc-manager.component.css']
 })
-export class HskpManagerComponent implements OnInit {
-  Hskpform: FormGroup;
+export class AccManagerComponent implements OnInit {
+  Accform: FormGroup;
   searchText: any;
   page:number = 1;
   items: Item[] = [];
   mode = 'create';
 
   constructor(
-    private hskpService : HSKPService,
+    private accService : AccService,
     private router: Router,
     private modalService: NgbModal,
     public fb: FormBuilder
   ) {
-    this.Hskpform = this.fb.group({
+    this.Accform = this.fb.group({
       itemsId: new FormControl(''),
       description: new FormControl(''),
       lostDate: new FormControl('',[ Validators.required]), 
@@ -36,21 +36,21 @@ export class HskpManagerComponent implements OnInit {
   }
 
   get validation() {
-    return this.Hskpform.controls;
+    return this.Accform.controls;
   }
 
   ngOnInit(): void {
-    this.hskpService.getAllContacts().subscribe((response) => {
+    this.accService.getAllContacts().subscribe((response) => {
       this.items = response;
     });
   }
 
   deleteRow(id:string) {
-    this.hskpService.deleteGuest(id).subscribe((response) => {
-        this.hskpService.getAllContacts().subscribe(
+    this.accService.deleteGuest(id).subscribe((response) => {
+        this.accService.getAllContacts().subscribe(
           (response) => {
             this.items = response;
-            this.router.navigate(['/hskp']);
+            this.router.navigate(['/acc']);
           },
           (error) => console.log(error)
         );
@@ -61,13 +61,13 @@ export class HskpManagerComponent implements OnInit {
       
   submitForm() {
     debugger
-    this.hskpService.submitForm(this.Hskpform.value).subscribe(
+    this.accService.submitForm(this.Accform.value).subscribe(
       (response) => {
-        this.hskpService.getAllContacts().subscribe(
+        this.accService.getAllContacts().subscribe(
           (response) => {
             this.items = response;
-            this.router.navigate(['/hskp']);
-            this.Hskpform.reset();
+            this.router.navigate(['/acc']);
+            this.Accform.reset();
           },
           (error) => console.log(error)
         );
@@ -77,12 +77,12 @@ export class HskpManagerComponent implements OnInit {
   }
 
   updateGuest(id:string) {
-    this.hskpService.updateGuest(id,this.Hskpform.value).subscribe((response) => {
-        this.hskpService.getAllContacts().subscribe(
+    this.accService.updateGuest(id,this.Accform.value).subscribe((response) => {
+        this.accService.getAllContacts().subscribe(
           (response) => {
             this.items = response;
-            this.router.navigate(['/hskp']);
-            this.Hskpform.reset();
+            this.router.navigate(['/acc']);
+            this.Accform.reset();
           },
           (error) => console.log(error)
         );
@@ -107,7 +107,7 @@ export class HskpManagerComponent implements OnInit {
   }
 
   clearModalData() {
-    this.Hskpform.reset();
+    this.Accform.reset();
   }
 
   cancel() {

@@ -1,5 +1,5 @@
-export interface inventory { //Model
-  inventoryId: any;
+export interface lense { //Model
+  lenseId: any;
   categoryId: any;
   quantity: string;
   date: string;

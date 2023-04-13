@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root',
 })
 
-export class HSKPService {
+export class AccService {
     
     contactsBaseUrl: string = environment.serverBaseUrl + '/items';
     constructor(private http : HttpClient, private router: Router, public fb: FormBuilder) {

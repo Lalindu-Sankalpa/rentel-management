@@ -7,8 +7,8 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { CameraComponent } from './cameratype/camera/camera.component';
 import { CameratypeComponent } from './cameratype/cameratype.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { InventoryComponent } from './inventory/inventory.component';
-import { HskpManagerComponent } from './hskp-manager/hskp-manager.component';
+import { LenseComponent } from './lense/lense.component';
+import { AccManagerComponent } from './acc-manager/acc-manager.component';
 import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
@@ -19,8 +19,8 @@ const routes: Routes = [
   {path:'cameratype', component:CameratypeComponent},
   {path: 'newreservation', component:NewReservationComponent},
   {path: 'dashboard', component:DashboardComponent},
-  {path: 'inventory', component:InventoryComponent},
-  {path: 'hskp', component:HskpManagerComponent},
+  {path: 'lense', component:LenseComponent},
+  {path: 'acc', component:AccManagerComponent},
   {path: 'report', component:ReportComponent},
 ];
 

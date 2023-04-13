@@ -27,8 +27,8 @@ import { NewReservationComponent } from './reservation/new-reservation/new-reser
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { InventoryComponent } from './inventory/inventory.component';
-import { HskpManagerComponent } from './hskp-manager/hskp-manager.component';
+import { LenseComponent } from './lense/lense.component';
+import { AccManagerComponent } from './acc-manager/acc-manager.component';
 import { ReportComponent } from './report/report.component';
 
 @NgModule({
@@ -42,8 +42,8 @@ import { ReportComponent } from './report/report.component';
     CameratypeComponent,
     NewReservationComponent,
     DashboardComponent,
-    InventoryComponent,
-    HskpManagerComponent,
+    LenseComponent,
+    AccManagerComponent,
     ReportComponent,
     
   ],

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HskpManagerComponent } from './hskp-manager.component';
+import { AccManagerComponent } from './acc-manager.component';
 
-describe('HskpManagerComponent', () => {
-  let component: HskpManagerComponent;
-  let fixture: ComponentFixture<HskpManagerComponent>;
+describe('AccManagerComponent', () => {
+  let component: AccManagerComponent;
+  let fixture: ComponentFixture<AccManagerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HskpManagerComponent ]
+      declarations: [ AccManagerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HskpManagerComponent);
+    fixture = TestBed.createComponent(AccManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

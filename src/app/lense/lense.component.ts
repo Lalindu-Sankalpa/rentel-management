@@ -1,32 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from './inventory.service';
+import { LenseService } from './lense.service';
 import { Router } from '@angular/router';
-import { inventory } from './inventory';
+import { lense } from './lense';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-inventory',
-  templateUrl: './inventory.component.html',
-  styleUrls: ['./inventory.component.css']
+  selector: 'app-lense',
+  templateUrl: './lense.component.html',
+  styleUrls: ['./lense.component.css']
 })
-export class InventoryComponent implements OnInit {
+export class LenseComponent implements OnInit {
 
-  Hskpform: FormGroup;
+  Accform: FormGroup;
   searchText: any;
   page:number = 1;
-  inventories: inventory[] = [];
+  lenses: lense[] = [];
   mode = 'create';
 
   constructor(
-    private inventoryService : InventoryService,
+    private lenseService : LenseService,
     private router: Router,
     private modalService: NgbModal,
     public fb: FormBuilder
   ) {
-    this.Hskpform = this.fb.group({
-      inventoryId: new FormControl(''),
+    this.Accform = this.fb.group({
+      lenseId: new FormControl(''),
       categoryId: new FormControl(''),
       quantity: new FormControl('',[ Validators.required]), 
       date: new FormControl('', Validators.required),
@@ -38,21 +38,21 @@ export class InventoryComponent implements OnInit {
   }
 
   get validation() {
-    return this.Hskpform.controls;
+    return this.Accform.controls;
   }
 
   ngOnInit(): void {
-    this.inventoryService.getAllContacts().subscribe((response) => {
-      this.inventories = response;
+    this.lenseService.getAllContacts().subscribe((response) => {
+      this.lenses = response;
     });
   }
 
   deleteRow(id:string) {
-    this.inventoryService.deleteGuest(id).subscribe((response) => {
-        this.inventoryService.getAllContacts().subscribe(
+    this.lenseService.deleteGuest(id).subscribe((response) => {
+        this.lenseService.getAllContacts().subscribe(
           (response) => {
-            this.inventories = response;
-            this.router.navigate(['/inventory']);
+            this.lenses = response;
+            this.router.navigate(['/lense']);
           },
           (error) => console.log(error)
         );
@@ -62,13 +62,13 @@ export class InventoryComponent implements OnInit {
   }
       
   submitForm() {
-    this.inventoryService.submitForm(this.Hskpform.value).subscribe(
+    this.lenseService.submitForm(this.Accform.value).subscribe(
       (response) => {
-        this.inventoryService.getAllContacts().subscribe(
+        this.lenseService.getAllContacts().subscribe(
           (response) => {
-            this.inventories = response;
-            this.router.navigate(['/inventory']);
-            this.Hskpform.reset();
+            this.lenses = response;
+            this.router.navigate(['/lense']);
+            this.Accform.reset();
           },
           (error) => console.log(error)
         );
@@ -80,13 +80,13 @@ export class InventoryComponent implements OnInit {
   updateGuest(id:any) {
     console.log(id);
     const InentoryId = id;
-    this.Hskpform.value.inventoryId = id;
-    this.inventoryService.updateGuest(id,this.Hskpform.value).subscribe((response) => {
-        this.inventoryService.getAllContacts().subscribe(
+    this.Accform.value.lenseId = id;
+    this.lenseService.updateGuest(id,this.Accform.value).subscribe((response) => {
+        this.lenseService.getAllContacts().subscribe(
           (response) => {
-            this.inventories = response;
-            this.router.navigate(['/inventory']);
-            this.Hskpform.reset();
+            this.lenses = response;
+            this.router.navigate(['/lense']);
+            this.Accform.reset();
           },
           (error) => console.log(error)
         );
@@ -111,7 +111,7 @@ export class InventoryComponent implements OnInit {
   }
 
   clearModalData() {
-    this.Hskpform.reset();
+    this.Accform.reset();
   }
 
   cancel() {

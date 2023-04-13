@@ -16,7 +16,7 @@
             <a class="nav-link deactive" aria-current="page" ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/hskp" >HSKP</a>
+          <a class="nav-link active" routerLink="/acc" >Acc</a>
       </li>
         <li class="nav-item">
           <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
@@ -32,7 +32,7 @@
   <div class="container-fluid">
     <div class="bar">
       <img class="img" src="assets/img/guest.jpg">
-      <h2 class ="pagename"  ><b>HSKP Manager </b></h2>
+      <h2 class ="pagename"  ><b>Accessories Mangement </b></h2>
     </div>
 
     <div class="input-group rounded search">
@@ -59,7 +59,7 @@
   </div>
   <div class="modal-body">
     <h1 class="modal-title" id="staticBackdropLabel"><b>Item Details</b></h1><br>
-    <form [formGroup]="Hskpform">
+    <form [formGroup]="Accform">
       
       <div class="form-group mb-3 form-row" >
         <label>Lost In :</label>
@@ -142,8 +142,8 @@
                 </button>
               </div>
               <div class="modal-body">
-                <h1 class="modal-title" id="staticBackdropLabel"><b>Hskp Details</b></h1><br>
-                <form [formGroup]="Hskpform">
+                <h1 class="modal-title" id="staticBackdropLabel"><b>Acc Details</b></h1><br>
+                <form [formGroup]="Accform">
                   <div class="form-group mb-3">
                     <label>Description :</label>
                     <input type="text" class="form-control" [(ngModel)]="item.description" formControlName="description">
@@ -186,7 +186,7 @@
               </div>
               <div class="modal-footer">
                 <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-                <button id="btn" type="button" [disabled]="Hskpform.invalid" class="btn btn-outline-dark" (click)="updateGuest(item.itemsId)" (click)="modal.close('Save click')">Update</button>
+                <button id="btn" type="button" [disabled]="Accform.invalid" class="btn btn-outline-dark" (click)="updateGuest(item.itemsId)" (click)="modal.close('Save click')">Update</button>
               </div>
             </ng-template>
 

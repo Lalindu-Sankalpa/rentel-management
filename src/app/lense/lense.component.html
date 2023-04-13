@@ -15,7 +15,7 @@
             <a class="nav-link deactive" aria-current="page" ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/inventory" >Inventory</a>
+          <a class="nav-link active" routerLink="/lense" >Lense</a>
       </li>
         <li class="nav-item">
           <a class="nav-link deactive" routerLink="/dashboard" >Dash-Board</a>
@@ -31,7 +31,7 @@
   <div class="container-fluid">
     <div class="bar">
       <img class="img" src="assets/img/guest.jpg">
-      <h2 class ="pagename"  ><b>Inventory Manager </b></h2>
+      <h2 class ="pagename"  ><b>Lenses Manager </b></h2>
     </div>
 
     <div class="input-group rounded search">
@@ -57,8 +57,8 @@
     </button>
   </div>
   <div class="modal-body">
-    <h1 class="modal-title" id="staticBackdropLabel"><b>Item Details</b></h1><br>
-    <form [formGroup]="Hskpform">
+    <h1 class="modal-title" id="staticBackdropLabel"><b>Lenses Details</b></h1><br>
+    <form [formGroup]="Accform">
       <div class="form-group mb-3">
         <label>Name :</label>
         <input type="text" class="form-control" formControlName="name">
@@ -120,14 +120,14 @@
       </thead>
   
       <tbody>
-        <tr *ngFor = "let inventory of inventories | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
-          <td data-label="Category" > <span>{{ inventory.categoryId }}</span></td>
-          <td data-label="Quantity" ><span>{{ inventory.quantity }}</span></td>
-          <td data-label="Date" > <span>{{ inventory.date | date: 'dd/MMM/yy'}}</span></td>
-          <td data-label="Name" ><span>{{ inventory.name}}</span></td>
-          <td data-label="Code" ><span>{{ inventory.code}}</span></td>
-          <td data-label="Notes" ><span>{{ inventory.notes}}</span></td>
-          <td data-label="Status" ><span>{{ inventory.status }}</span></td>
+        <tr *ngFor = "let lense of lenses | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
+          <td data-label="Category" > <span>{{ lense.categoryId }}</span></td>
+          <td data-label="Quantity" ><span>{{ lense.quantity }}</span></td>
+          <td data-label="Date" > <span>{{ lense.date | date: 'dd/MMM/yy'}}</span></td>
+          <td data-label="Name" ><span>{{ lense.name}}</span></td>
+          <td data-label="Code" ><span>{{ lense.code}}</span></td>
+          <td data-label="Notes" ><span>{{ lense.notes}}</span></td>
+          <td data-label="Status" ><span>{{ lense.status }}</span></td>
           <td data-label="Action" ><span>
             <mat-icon (click)="open(updateGuestModal)" style="color: #000;">edit</mat-icon>
 
@@ -139,13 +139,13 @@
                 </button>
               </div>
               <div class="modal-body">
-                <h1 class="modal-title" id="staticBackdropLabel"><b>Hskp Details</b></h1><br>
-                <form [formGroup]="Hskpform">
+                <h1 class="modal-title" id="staticBackdropLabel"><b>Acc Details</b></h1><br>
+                <form [formGroup]="Accform">
 
                   
                   <div class="form-group mb-3">
                     <label>Name :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.name" formControlName="name">
+                    <input type="text" class="form-control" [(ngModel)]="lense.name" formControlName="name">
                     <span class="error" *ngIf="validation.name.invalid && validation.name.touched" >
                       <small>Name is required!</small> 
                     </span>
@@ -153,37 +153,37 @@
 
                   <div class="form-group mb-3 form-row">
                     <label>CategoryId :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.categoryId" formControlName="categoryId">
+                    <input type="text" class="form-control" [(ngModel)]="lense.categoryId" formControlName="categoryId">
                   </div>
                   <div class="form-group mb-3 form-row middle">
                     <label>Quantity :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.quantity"  formControlName="quantity" >
+                    <input type="text" class="form-control" [(ngModel)]="lense.quantity"  formControlName="quantity" >
                   </div>
                   <div class="form-group mb-3 form-row">
                     <label>Date :</label>
-                    <input type="date" class="form-control" [(ngModel)]="inventory.date" formControlName="date" >
+                    <input type="date" class="form-control" [(ngModel)]="lense.date" formControlName="date" >
                   </div>
                   <div class="form-group mb-3 form-row middle" >
                     <label>Code :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.code" formControlName="code">
+                    <input type="text" class="form-control" [(ngModel)]="lense.code" formControlName="code">
                     <span class="error" *ngIf="validation.code.invalid && validation.code.touched" >
                       <small>Valid Code is required!</small> 
                     </span>
                   </div>
                   <div class="form-group mb-3 form-row " >
                     <label>Notes :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.notes" formControlName="notes">
+                    <input type="text" class="form-control" [(ngModel)]="lense.notes" formControlName="notes">
                   </div>
                   <div class="form-group mb-3 form-row middle" >
                     <label>Status :</label>
-                    <input type="text" class="form-control" [(ngModel)]="inventory.status" formControlName="status">
+                    <input type="text" class="form-control" [(ngModel)]="lense.status" formControlName="status">
                   </div>
                   <br>
                 </form>
               </div>
               <div class="modal-footer">
                 <button  id="Cancel" type="button" class="btn btn-outline-dark" (click)="cancel()"  (click)="modal.close('Save click')">Cancel</button>
-                <button id="btn" type="button" [disabled]="Hskpform.invalid" class="btn btn-outline-dark" (click)="updateGuest(inventory.inventoryId)" (click)="modal.close('Save click')">Update</button>
+                <button id="btn" type="button" [disabled]="Accform.invalid" class="btn btn-outline-dark" (click)="updateGuest(lense.lenseId)" (click)="modal.close('Save click')">Update</button>
               </div>
             </ng-template>
 
@@ -201,7 +201,7 @@
                 Are you sure to delete this item ?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="deleteRow(inventory.inventoryId)" (click)="modal.close('Delete click')">Delete</button>
+                <button type="button" class="btn btn-outline-dark" (click)="deleteRow(lense.lenseId)" (click)="modal.close('Delete click')">Delete</button>
               </div>
             </ng-template>
           </span>
