@@ -1,6 +1,6 @@
 <p>
     <mat-toolbar>
-        <h4><b>Rooms Overview</b></h4>
+        <h4><b>Camera & Drone Overview</b></h4>
     <span class="example-spacer"></span>
         <mat-icon (click)="open(addRoomModal)" (click)="setId()" (click)="clearModalData()" >add</mat-icon>
     </mat-toolbar>
@@ -100,10 +100,10 @@
                       </span>
                     </div> 
                     <div class="form-group mb-3">
-                      <label>Room Type Number :</label>
+                      <label>Camera Type Number :</label>
                       <input type="text" class="form-control" [(ngModel)]="room.CameratypeId" formControlName="CameratypeId" >
                       <span class="error" *ngIf="validation.CameratypeId.invalid && validation.CameratypeId.touched" >
-                        <small>Room Type Number is required!</small>
+                        <small>Camera Type Number is required!</small>
                       </span>
                     </div> 
                     <div class="form-check">

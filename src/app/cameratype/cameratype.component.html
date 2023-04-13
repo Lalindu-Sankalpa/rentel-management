@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light firstNavBar" id="firstNavBar" >
   <div class="container-fluid">
       <div class= "header">
-          <h1 class= "header">Prism System </h1>
+          <h1 class= "header">Rental System </h1>
       </div>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
   <div class="container-fluid">
     <div class="bar">
       <img class="img" src="assets/img/room.jpg">
-      <h2 class ="pagename" ><b>Room Type </b></h2>
+      <h2 class ="pagename" ><b>Camera Type </b></h2>
     </div>
 
     <div class="input-group rounded search">
@@ -53,16 +53,16 @@
           <mat-icon  (click)="open(addCameratypeModal)"  (click)="clearModalData() " >add</mat-icon>
         </mat-toolbar>
       </p>
-      <!-- room type Add modal-->
+      <!-- Camera Type Add modal-->
       <ng-template #addCameratypeModal let-modal >
         <div class="modal-body">
           <h2 class="text-center" ><b>Room Details</b></h2>
           <form [formGroup]="Cameratypeform">
             <div class="form-group mb-3">
-              <label>Room Type Name:</label>
+              <label>Camera Type Name:</label>
               <input type="text" class="form-control" formControlName="name">
               <span class="error" *ngIf="validation.name.invalid && validation.name.touched" >
-                <small>  Room Type Name is required!</small>
+                <small>  Camera Type Name is required!</small>
               </span>
             </div>
             <div class="form-group mb-3">
@@ -92,10 +92,10 @@
               <h2 class="text-center" ><b>Room Details</b></h2>
                 <form [formGroup]="Cameratypeform">
                   <div class="form-group mb-3">
-                    <label>Room Type Name:</label>
+                    <label>Camera Type Name:</label>
                     <input type="text" class="form-control" [(ngModel)]="Cameratype.name" formControlName="name">
                     <span class="error" *ngIf="validation.name.invalid && validation.name.touched" >
-                      <small>  Room Type Name is required!</small>
+                      <small>  Camera Type Name is required!</small>
                     </span>
                   </div>
                   <div class="form-group mb-3">
@@ -123,7 +123,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                Are you sure to delete this Room Type ?
+                Are you sure to delete this Camera Type ?
               </div>
               <div class="modal-footer">
                 <button type="button" class="deletebtn btn-outline-dark" (click)="deleteRow()" (click)="modal.close('Delete click')">Delete</button>
