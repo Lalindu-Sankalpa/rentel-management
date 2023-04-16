@@ -65,7 +65,7 @@
       </thead>
       <tbody>
         <tr *ngFor = "let camera of cameras | filter:search">
-          <ng-container *ngIf="camera.CameratypeId == data ">
+          <ng-container *ngIf="camera.cameratypeId == data ">
             <td data-label="Status" > <mat-icon [ngStyle]="{'color': camera.isActive? '#143E18' : '#6B1111'}">lens</mat-icon></td>
             <td data-label="Camera No" > <span>{{ camera.cameraNo }}</span></td>
             <td data-label="Price" ><span>{{ camera.price }}</span></td>

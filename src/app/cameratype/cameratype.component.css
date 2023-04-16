@@ -50,12 +50,12 @@ button {
   border-radius: 0%;
 }
 .btn:focus {     
-  color: rgb(255, 218, 84);  
-  box-shadow: 0 1px 8px 0 rgb(255, 218, 84);
+  color: rgb(112, 10, 116);  
+  box-shadow: 0 1px 8px 0 rgb(112, 10, 116);
 }
 .click {
-  color: rgb(255, 218, 84);  
-  box-shadow: 0 1px 8px 0 rgb(255, 218, 84);
+  color: rgb(112, 10, 116);  
+  box-shadow: 0 1px 8px 0 rgb(112, 10, 116);
   border: none;
   width: 180px;
   height: 55px;
