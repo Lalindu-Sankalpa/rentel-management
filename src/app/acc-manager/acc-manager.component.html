@@ -61,34 +61,21 @@
     <h1 class="modal-title" id="staticBackdropLabel"><b>Item Details</b></h1><br>
     <form [formGroup]="Accform">
       
-      <div class="form-group mb-3 form-row" >
-        <label>Lost In :</label>
-        <input type="text" class="form-control" formControlName="lostIn">
-        <span class="error" *ngIf="validation.lostIn.invalid && validation.lostIn.touched" >
-          <small>Valid Lost In is required!</small> 
-        </span>
-      </div>
-      <div class="form-group mb-3 form-row middle" >
-        <label>Report By :</label>
-        <input type="text" class="form-control" formControlName="reportBy">
-        <span class="error" *ngIf="validation.reportBy.invalid && validation.reportBy.touched" >
-          <small>Valid Report By is required!</small> 
-        </span>
+      <div class="form-group mb-3" >
+        <label>Name :</label>
+        <input type="text" class="form-control" formControlName="name">
       </div>
       <div class="form-group mb-3">
         <label>Description :</label>
         <input type="text" class="form-control" formControlName="description">
       </div>
       <div class="form-group mb-3 form-row">
-        <label>Lost Date :</label>
-        <input type="date" class="form-control" formControlName="lostDate" >
-        <span class="error" *ngIf="validation.lostDate.invalid && validation.lostDate.touched" >
-          <small>Date Of LostDate is required!</small>
-        </span>
+        <label>Acc No :</label>
+        <input type="text" class="form-control" formControlName="accNo">
       </div>
       <div class="form-group mb-3 form-row middle">
-        <label>Found Date :</label>
-        <input type="date" class="form-control" formControlName="foundDate" >
+        <label>Price :</label>
+        <input type="text" class="form-control" formControlName="price">
       </div>
       <div class="form-group mb-3 form-row">
         <label>Status :</label>
@@ -113,11 +100,10 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th scope="col">Name</th>
           <th scope="col">Description</th>
-          <th scope="col">Lost Date</th>
-          <th scope="col">Lost In</th>
-          <th scope="col">Report By</th>
-          <th scope="col">Found Date</th>
+          <th scope="col">Acc No</th>
+          <th scope="col">Price</th>
           <th scope="col">Status</th>
           <th scope="col">Action</th>
         </tr>
@@ -125,11 +111,10 @@
   
       <tbody>
         <tr *ngFor = "let item of items | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
-          <td data-label="Description" > <span>{{ item.description }}</span></td>
-          <td data-label="Lost Date" > <span>{{ item.lostDate | date: 'dd/MMM/yy'}}</span></td>
-          <td data-label="Lost In" ><span>{{ item.lostIn }}</span></td>
-          <td data-label="Report By" ><span>{{ item.reportBy}}</span></td>
-          <td data-label="Found Date" ><span>{{ item.foundDate | date: 'dd/MMM/yy'}}</span></td>
+          <td data-label="Name" > <span>{{ item.name }}</span></td>
+          <td data-label="Description" > <span>{{ item.description}}</span></td>
+          <td data-label="Acc No" ><span>{{ item.accNo }}</span></td>
+          <td data-label="Price" ><span>{{ item.price}}</span></td>
           <td data-label="Status" ><span>{{ item.status }}</span></td>
           <td data-label="Action" ><span>
             <mat-icon (click)="open(updateGuestModal)" style="color: #000;">edit</mat-icon>
@@ -145,19 +130,20 @@
                 <h1 class="modal-title" id="staticBackdropLabel"><b>Acc Details</b></h1><br>
                 <form [formGroup]="Accform">
                   <div class="form-group mb-3">
+                    <label>Name :</label>
+                    <input type="text" class="form-control" [(ngModel)]="item.name" formControlName="name">
+                  </div>
+                  <div class="form-group mb-3">
                     <label>Description :</label>
                     <input type="text" class="form-control" [(ngModel)]="item.description" formControlName="description">
                   </div>
-                  <div class="form-group mb-3 form-row">
-                    <label>Lost Date :</label>
-                    <input type="date" class="form-control" [(ngModel)]="item.lostDate" formControlName="lostDate" >
-                    <span class="error" *ngIf="validation.lostDate.invalid && validation.lostDate.touched" >
-                      <small>Date Of LostDate is required!</small>
-                    </span>
+                  <div class="form-group mb-3">
+                    <label>Acc No :</label>
+                    <input type="text" class="form-control" [(ngModel)]="item.accNo" formControlName="accNo">
                   </div>
-                  <div class="form-group mb-3 form-row middle">
-                    <label>Found Date :</label>
-                    <input type="date" class="form-control" [(ngModel)]="item.foundDate" formControlName="foundDate" >
+                  <div class="form-group mb-3">
+                    <label>Price :</label>
+                    <input type="text" class="form-control" [(ngModel)]="item.price" formControlName="price">
                   </div>
                   <div class="form-group mb-3 form-row">
                     <label>Status :</label>
@@ -166,21 +152,6 @@
                       <small>Status is required!</small> 
                     </span>
                   </div>
-                  <div class="form-group mb-3 form-row middle" >
-                    <label>Report By :</label>
-                    <input type="text" class="form-control" [(ngModel)]="item.reportBy" formControlName="reportBy">
-                    <span class="error" *ngIf="validation.reportBy.invalid && validation.reportBy.touched" >
-                      <small>Valid Report By is required!</small> 
-                    </span>
-                  </div>
-                  <div class="form-group mb-3 form-row" >
-                    <label>Lost In :</label>
-                    <input type="text" class="form-control" [(ngModel)]="item.lostIn" formControlName="lostIn">
-                    <span class="error" *ngIf="validation.lostIn.invalid && validation.lostIn.touched" >
-                      <small>Valid Lost In is required!</small> 
-                    </span>
-                  </div>
-                  
                   <br>
                 </form>
               </div>

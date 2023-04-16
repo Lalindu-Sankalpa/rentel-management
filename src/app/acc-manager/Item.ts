@@ -1,9 +1,8 @@
 export interface Item { //Model
   itemsId: any;
+  name: string;
   description: string;
-  lostDate: string;
-  lostIn: string;
-  reportBy: string;
-  foundDate: string;
+  accNo: string;
+  price: string;
   status: string;
 }

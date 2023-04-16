@@ -1,12 +1,12 @@
 .header {
   font-family: Sarpanch;
   text-align: left;
-  color: rgb(255, 100, 0);
+  color: rgb(245, 237, 252);
   font-size: larger;
   width: 65%;
   display: table-cell;
   vertical-align: middle;
-  background-color: #041A32;
+  background-color: rgb(62, 16, 97);
 }
 .con {
   display:table;
@@ -50,12 +50,12 @@ button {
   border-radius: 0%;
 }
 .btn:focus {     
-  color: #FF6400;  
-  box-shadow: 0 1px 8px 0 #FF6400;
+  color: rgb(255, 218, 84);  
+  box-shadow: 0 1px 8px 0 rgb(255, 218, 84);
 }
 .click {
-  color: #FF6400;  
-  box-shadow: 0 1px 8px 0 #FF6400;
+  color: rgb(255, 218, 84);  
+  box-shadow: 0 1px 8px 0 rgb(255, 218, 84);
   border: none;
   width: 180px;
   height: 55px;

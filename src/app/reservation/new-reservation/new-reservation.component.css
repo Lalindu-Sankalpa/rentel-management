@@ -1,12 +1,12 @@
 .header {
   font-family: Sarpanch;
   text-align: left;
-  color: rgb(255, 100, 0);
+  color: rgb(245, 237, 252);
   font-size: larger;
   width: 65%;
   display: table-cell;
   vertical-align: middle;
-  background-color: #041A32;
+  background-color: rgb(62, 16, 97);
 }
 .nav-link {
   padding-right: 3rem !important;

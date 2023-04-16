@@ -26,11 +26,10 @@ export class AccManagerComponent implements OnInit {
   ) {
     this.Accform = this.fb.group({
       itemsId: new FormControl(''),
+      name: new FormControl(''),
       description: new FormControl(''),
-      lostDate: new FormControl('',[ Validators.required]), 
-      lostIn: new FormControl(''),
-      reportBy: new FormControl(''), 
-      foundDate: new FormControl(''),
+      accNo: new FormControl(''),
+      price: new FormControl(''),
       status: new FormControl(''),
     });
   }
@@ -40,9 +39,29 @@ export class AccManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accService.getAllContacts().subscribe((response) => {
-      this.items = response;
-    });
+    // this.accService.getAllContacts().subscribe((response) => {
+    //   this.items = response;
+    // });
+
+    this.items = [
+      {
+          "itemsId": 1,
+          "name": "1000",
+          "description": "1",
+          "accNo": "12580.80",
+          "price": "Clean",
+          "status": "true"
+        },
+        {
+          "itemsId": 1,
+          "name": "1000",
+          "description": "1",
+          "accNo": "12580.80",
+          "price": "Clean",
+          "status": "true"
+        }
+      ]
+      
   }
 
   deleteRow(id:string) {

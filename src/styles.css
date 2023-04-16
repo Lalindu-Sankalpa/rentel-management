@@ -1,8 +1,8 @@
 .firstNavBar {
-  background-color: #041A32;
+  background-color: rgb(62, 16, 97);
 }
 .firstNavBar .container-fluid , #navbarNav {
-  background-color: #041A32;
+  background-color: rgb(62, 16, 97);
 }
 .firstNavBar img {
   border-radius: 50%;
@@ -17,7 +17,7 @@
   color: #fff;
 }
 #navbarNav .active {
-  color: #FF6400;
+  color: rgb(255, 218, 84);
 }
 .secondNavBar {
   background-color: #F8F8F8;
@@ -42,7 +42,7 @@
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .search #searchIcon {
-  background-color: #041A32; 
+  background-color: rgb(62, 16, 97); 
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2); 
   color: #fff;
 }
@@ -120,7 +120,7 @@ table td {
 }
 #btn {
   color: #fff;
-  background-color: #FF6400;
+  background-color: rgb(255, 218, 84);
   box-shadow: 0 10px 12px 0 rgba(0, 0, 0, 0.2);
 }
 #Cancel {
@@ -161,7 +161,7 @@ form label {
   text-decoration: none;
 }
 .paginator .ngx-pagination .current {
-  background: rgb(255, 100, 0);
+  background: rgb(245, 237, 252);
   border-radius: 4px;
   padding-left: 9px;
   padding-right: 9px;

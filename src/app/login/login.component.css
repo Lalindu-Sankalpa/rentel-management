@@ -1,5 +1,5 @@
 .submit {
-    background-color: rgb(4, 26, 50);
+    background-color: rgb(62, 16, 97);
     color: rgb(255, 255, 255);
     width: 100%;
     border: none;
@@ -8,8 +8,8 @@
 .header1 {
     font-family: Sarpanch;
     text-align: center;
-    color: rgb(255, 100, 0);
-    -webkit-text-stroke: 1px #041A32;
+    color: rgb(245, 237, 252);
+    -webkit-text-stroke: 1px rgb(62, 16, 97);
     font-size: 35px;
 }
 .login {
