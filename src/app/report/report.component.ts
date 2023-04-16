@@ -85,7 +85,7 @@ export class ReportComponent implements OnInit {
         "cameraId": "1",
         "arrivalDate": "2021/01/01",
         "departureDate": "2021/01/05",
-        "notes": "Advance - 30000.00",
+        "notes": "Advance - 35000.00",
         "status": "Confirmed"
       }
     ]
