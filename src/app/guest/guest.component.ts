@@ -40,9 +40,38 @@ export class GuestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.guestService.getAllContacts().subscribe((response) => {
-      this.guests = response;
-    });
+    // this.guestService.getAllContacts().subscribe((response) => {
+    //   this.guests = response;
+    // });
+    this.guests = [
+        {
+          "id": "1",
+          "name": "Kamani Silva",
+          "phoneNo": "076 9955682",
+          "dateOfBirth": "1998/01/09",
+          "email": "kamani@gmail.com",
+          "idNo": "986876384V",
+          "isActive": true
+        },
+        {
+          "id": "2",
+          "name": "Sandu Silva",
+          "phoneNo": "076 9955682",
+          "dateOfBirth": "1998/01/09",
+          "email": "sandu@gmail.com",
+          "idNo": "986876384V",
+          "isActive": true
+        },
+        {
+          "id": "3",
+          "name": "Mal Silva",
+          "phoneNo": "076 9955682",
+          "dateOfBirth": "1998/01/09",
+          "email": "mal@gmail.com",
+          "idNo": "986876384V",
+          "isActive": true
+        }
+      ]
   }
 
   deleteRow(id:string) {

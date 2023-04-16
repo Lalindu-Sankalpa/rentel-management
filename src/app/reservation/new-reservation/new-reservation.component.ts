@@ -69,19 +69,101 @@ export class NewReservationComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.guestService.getAllContacts().subscribe((response) => {
-      this.guests = response;
-    });
-    this.cameraService.getAllCameras().subscribe((response) => {
-      this.cameras = response;
-    });
-    this.reservationService.getOrders().subscribe((response) => {
-      this.reservations = response;
-      const reservation = this.reservations.sort((a, b) => b.reservationNo.localeCompare(a.reservationNo));
-      const lastReservationNo = reservation[0].reservationNo;
-      const split = lastReservationNo.split(/['OB']/);
-      this.newReservationNo = 'OB'+('00000'+(Number(split[2])+1)).slice(-6);
-    });
+    // this.guestService.getAllContacts().subscribe((response) => {
+    //   this.guests = response;
+    // });
+    // this.cameraService.getAllCameras().subscribe((response) => {
+    //   this.cameras = response;
+    // });
+    // this.reservationService.getOrders().subscribe((response) => {
+    //   this.reservations = response;
+    //   const reservation = this.reservations.sort((a, b) => b.reservationNo.localeCompare(a.reservationNo));
+    //   const lastReservationNo = reservation[0].reservationNo;
+    //   const split = lastReservationNo.split(/['OB']/);
+    //   this.newReservationNo = 'OB'+('00000'+(Number(split[2])+1)).slice(-6);
+    // });
+
+    this.guests = [
+      {
+        "id": "1",
+        "name": "Kamani Silva",
+        "phoneNo": "076 9955682",
+        "dateOfBirth": "1998/01/09",
+        "email": "kamani@gmail.com",
+        "idNo": "986876384V",
+        "isActive": true
+      },
+      {
+        "id": "2",
+        "name": "Sandu Silva",
+        "phoneNo": "076 9955682",
+        "dateOfBirth": "1998/01/09",
+        "email": "sandu@gmail.com",
+        "idNo": "986876384V",
+        "isActive": true
+      },
+      {
+        "id": "3",
+        "name": "Mal Silva",
+        "phoneNo": "076 9955682",
+        "dateOfBirth": "1998/01/09",
+        "email": "mal@gmail.com",
+        "idNo": "986876384V",
+        "isActive": true
+      }
+    ]
+
+    this.cameras  = [
+      {
+          "id": "1",
+          "cameraNo": "00001",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":true,
+          "cameratypeId": "1"
+        },
+        {
+          "id": "2",
+          "cameraNo": "00002",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":true,
+          "cameratypeId": "1"
+        },
+        {
+          "id": "3",
+          "cameraNo": "00003",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":false,
+          "cameratypeId": "1"
+        },
+        {
+          "id": "4",
+          "cameraNo": "00004",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":true,
+          "cameratypeId": "1"
+        },
+        {
+          "id": "5",
+          "cameraNo": "00005",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":true,
+          "cameratypeId": "1"
+        },
+        {
+          "id": "6",
+          "cameraNo": "00006",
+          "price": "1000.00",
+          "cameraStatus": "Good condition",
+          "isActive":true,
+          "cameratypeId": "1"
+        }
+      ]
+
   }
 
   displayGuestName(id?: any) {
