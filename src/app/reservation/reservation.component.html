@@ -54,8 +54,8 @@
             <thead>
                 <tr>
                     <th scope="col">Reservation No</th>
-                    <th scope="col">Guest Name</th>
-                    <th scope="col">Guest Email</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer Email</th>
                     <th scope="col">Item No</th>
                     <th scope="col">Arrival Date</th>
                     <th scope="col">Departure Date</th>
@@ -68,8 +68,8 @@
             <tbody>
                 <tr *ngFor = "let reservation of reservations | filter:searchText | paginate: {itemsPerPage : 5, currentPage:page};" >
                     <td data-label="Reservation No" > <span>{{ reservation.reservationNo }}</span></td>
-                    <td data-label="Guest Name" > <span>{{ reservation.guestName }}</span></td>
-                    <td data-label="Guest Name" > <span>{{ reservation.guestEmail }}</span></td>
+                    <td data-label="Customer Name" > <span>{{ reservation.guestName }}</span></td>
+                    <td data-label="Customer Name" > <span>{{ reservation.guestEmail }}</span></td>
                     <td data-label="Item Id" ><span>{{ reservation.cameraNo }}</span></td>
                     <td data-label="Arrival Date" ><span>{{ reservation.arrivalDate | date: 'dd/MMM/yy'}}</span></td>
                     <td data-label="Departure Date" ><span>{{ reservation.departureDate | date: 'dd/MMM/yy' }}</span></td>
@@ -134,7 +134,7 @@
                                         <input type="text" [readonly]="disableMessage" [(ngModel)]="reservation.status" class="form-control" formControlName="status">     
                                     </div>
                                     <div class="form-group form-row mb-3">
-                                        <label>Guest Name :</label>
+                                        <label>Customer Name :</label>
                                         <input type="text" required  [(ngModel)]="reservation.guestId" class="form-control" formControlName="guestId">
                                         <span class="error" *ngIf="validation.guestId.invalid && validation.guestId.touched" >
                                             <small>  Guest Id is required!</small>

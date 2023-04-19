@@ -48,10 +48,10 @@
     <div class="row" >
         <div class="col-md-6 no-float" id="leftCol">
             <div class="card card1" >
-                <h3><b>Guest Details</b></h3>
+                <h3><b>Customer Details</b></h3>
                 <form [formGroup]="Reservationform">
                     <div class="form-group mb-3">
-                        <label>Guest Name :</label>
+                        <label>Customer Name :</label>
                         <input type="text" class="form-control" [matAutocomplete]="auto" formControlName="guestId">
                         <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete" [displayWith]="displayGuestName.bind(this)">
                             <mat-option  *ngFor="let guest of guests" [value]="guest.id">
@@ -59,7 +59,7 @@
                             </mat-option>
                         </mat-autocomplete>
                         <span class="error" *ngIf="validation.guestId.invalid && validation.guestId.touched" >
-                            <small>  Guest Name is required!</small>
+                            <small>  Customer Name is required!</small>
                         </span>
                     </div>
                     <div class="form-group mb-3 form-row leftcol">
