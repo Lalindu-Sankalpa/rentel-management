@@ -11,7 +11,7 @@ import { environment } from "src/environments/environment";
 
 export class CameratypeService {
     
-    contactsBaseUrl: string = environment.serverBaseUrl  + '/cameratypes';
+    contactsBaseUrl: string = environment.serverBaseUrl  + '/cameraTypes';
     constructor(private http : HttpClient, private router: Router, public fb: FormBuilder){
     }
 
