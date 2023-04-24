@@ -35,40 +35,11 @@ export class CameratypeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.cameratypeService.getAllCameratype().subscribe((response) => {
-    //   this.cameratypes = response;
-    //   this.getId(this.cameratypes[0].id);
-    // });
+    this.cameratypeService.getAllCameratype().subscribe((response) => {
+      this.cameratypes = response;
+      this.getId(this.cameratypes[0].id);
+    });
 
-    this.cameratypes = [
-      {
-          "id": "1",
-          "code": "1000",
-          "name": "Drones"
-        },
-        {
-          "id": "2",
-          "code": "1000",
-          "name": "DSLR"
-        },
-        {
-          "id": "3",
-          "code": "1000",
-          "name": "Mirrorless Cameras"
-        },
-        {
-          "id": "4",
-          "code": "1000",
-          "name": "360 Cameras"
-        },
-        {
-          "id": "5",
-          "code": "1000",
-          "name": "Action Cameras"
-        }
-      ]
-
-      this.CameratypeID="1";
   }
   submitForm() {
     this.cameratypeService.submitForm(this.Cameratypeform.value).subscribe(

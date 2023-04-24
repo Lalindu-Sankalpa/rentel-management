@@ -44,60 +44,10 @@ export class CameraComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.cameraService.getAllCameras().subscribe((response) => {
-    //   this.cameras = response;
+    this.cameraService.getAllCameras().subscribe((response) => {
+      this.cameras = response;
      
-    // });
-    this.cameras = [
-      {
-          "id": "1",
-          "cameraNo": "00001",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":true,
-          "cameratypeId": "1"
-        },
-        {
-          "id": "2",
-          "cameraNo": "00002",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":true,
-          "cameratypeId": "1"
-        },
-        {
-          "id": "3",
-          "cameraNo": "00003",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":false,
-          "cameratypeId": "1"
-        },
-        {
-          "id": "4",
-          "cameraNo": "00004",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":true,
-          "cameratypeId": "1"
-        },
-        {
-          "id": "5",
-          "cameraNo": "00005",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":true,
-          "cameratypeId": "1"
-        },
-        {
-          "id": "6",
-          "cameraNo": "00006",
-          "price": "1000.00",
-          "cameraStatus": "Good condition",
-          "isActive":true,
-          "cameratypeId": "1"
-        }
-      ]
+    });
       
   }
   setId(){

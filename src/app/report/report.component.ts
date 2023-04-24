@@ -29,65 +29,24 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
     
-    // forkJoin({
-    //   guestResponse: this.guestService.getAllContacts(),
-    //   cameraResponse: this.cameraService.getAllCameras(),
-    //   reservationResponse: this.reservationService.getOrders()
-    // })
-    // .subscribe((response) => {
-    //   this.guests = response.guestResponse;
-    //   this.cameras = response.cameraResponse;
-    //   this.reservations = response.reservationResponse.map(reservation => {
-    //     const camera = this.cameras.find(r => r.id == reservation.cameraId);
-    //     reservation.cameraNo = camera != undefined ? camera.cameraNo : 'NA';
-    //     const email = this.guests.find(e => e.id == reservation.guestId);
-    //     reservation.guestEmail = email != undefined ? email.email : 'NA';
-    //     const guest = this.guests.find(g => g.id == reservation.guestId);
-    //     reservation.guestName = guest != undefined ? guest.name : 'NA';
-    //     return reservation;
-    //   });
-    // });
+    forkJoin({
+      guestResponse: this.guestService.getAllContacts(),
+      cameraResponse: this.cameraService.getAllCameras(),
+      reservationResponse: this.reservationService.getOrders()
+    })
+    .subscribe((response) => {
+      this.guests = response.guestResponse;
+      this.cameras = response.cameraResponse;
+      this.reservations = response.reservationResponse.map(reservation => {
+        const camera = this.cameras.find(r => r.id == reservation.cameraId);
+        reservation.cameraNo = camera != undefined ? camera.cameraNo : 'NA';
+        const email = this.guests.find(e => e.id == reservation.guestId);
+        reservation.guestEmail = email != undefined ? email.email : 'NA';
+        const guest = this.guests.find(g => g.id == reservation.guestId);
+        reservation.guestName = guest != undefined ? guest.name : 'NA';
+        return reservation;
+      });
+    });
 
-    this.reservations= [
-      {
-        "orderId": "1",
-        "reservationNo": "RE00001",
-        "guestId": "1",
-        "guestName": "Kamani Silva",
-        "guestEmail": "kamani@gmail.com",
-        "cameraNo": "00001",
-        "cameraId": "1",
-        "arrivalDate": "2021/01/01",
-        "departureDate": "2021/01/05",
-        "notes": "Advance - 10000.00",
-        "status": "Confirmed"
-      },
-      {
-        "orderId": "2",
-        "reservationNo": "RE00002",
-        "guestId": "2",
-        "guestName": "Sandu Silva",
-        "guestEmail": "sandu@gmail.com",
-        "cameraNo": "00002",
-        "cameraId": "1",
-        "arrivalDate": "2021/01/01",
-        "departureDate": "2021/01/05",
-        "notes": "Advance - 15000.00",
-        "status": "Taking"
-      },
-      {
-        "orderId": "3",
-        "reservationNo": "RE00003",
-        "guestId": "3",
-        "guestName": "Mal Silva",
-        "guestEmail": "Mal@gmail.com",
-        "cameraNo": "00003",
-        "cameraId": "1",
-        "arrivalDate": "2021/01/01",
-        "departureDate": "2021/01/05",
-        "notes": "Advance - 30000.00",
-        "status": "Confirmed"
-      }
-    ]
   }
 }

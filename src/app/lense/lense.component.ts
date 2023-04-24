@@ -42,42 +42,10 @@ export class LenseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.lenseService.getAllContacts().subscribe((response) => {
-    //   this.lenses = response;
-    // });
+    this.lenseService.getAllContacts().subscribe((response) => {
+      this.lenses = response;
+    });
 
-    this.lenses = [
-      {
-          "lenseId": "1",
-          "categoryId": "00001",
-          "quantity": "3",
-          "date": "2020/01/09",
-          "name": "normal",
-          "code":"LS001",
-          "notes": "1",
-          "status": "Good condition"
-        },
-        {
-          "lenseId": "2",
-          "categoryId": "00002",
-          "quantity": "3",
-          "date": "2020/01/09",
-          "name": "telephoto",
-          "code":"LS002",
-          "notes": "1",
-          "status": "Good condition"
-        },
-        {
-          "lenseId": "3",
-          "categoryId": "00003",
-          "quantity": "3",
-          "date": "2020/01/09",
-          "name": " wide angle",
-          "code":"LS003",
-          "notes": "1",
-          "status": "Good condition"
-        }
-      ]
   }
 
   deleteRow(id:string) {
